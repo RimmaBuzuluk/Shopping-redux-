@@ -4,17 +4,29 @@ import { cartActions } from "../store/cart-clice";
 import "./Cart.css";
 const CartItem = ({ name, quantity, total, price, id }) => {
   const dispatch = useDispatch();
-  const removeHandler = () => {
-    dispatch(cartActions.removeFromCart(id));
-  };
-  const addHandler = () => {
+  // const removeHandler = () => {
+  //   dispatch(cartActions.removeFromCart(id));
+  // };
+  // const addHandler = () => {
+  //   dispatch(
+  //     cartActions.addToCart({
+  //       id,
+  //       name,
+  //       price,
+  //     })
+  //   );
+  // };
+  const incrementCartItem = () => {
     dispatch(
       cartActions.addToCart({
-        id,
         name,
+        id,
         price,
       })
     );
+  };
+  const decrementCartItem = () => {
+    dispatch(cartActions.removeFromCart(id));
   };
   return (
     <div className="cartItem">
@@ -22,10 +34,10 @@ const CartItem = ({ name, quantity, total, price, id }) => {
       <p>${price} /-</p>
       <p>x{quantity}</p>
       <article>Total ${total}</article>
-      <button className="cart-actions" onClick={removeHandler}>
+      <button onClick={decrementCartItem} className="cart-actions">
         -
       </button>
-      <button className="cart-actions" onClick={addHandler}>
+      <button onClick={incrementCartItem} className="cart-actions">
         +
       </button>
     </div>
