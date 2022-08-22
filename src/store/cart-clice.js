@@ -30,7 +30,7 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, actions) {},
     setShowCart(state) {
-      state.showCart = true;
+      state.showCart = !state.showCart;
     },
   },
 });
